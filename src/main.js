@@ -4,7 +4,7 @@ window.onload = function () {
 	// 	y: 200,
 	// 	r: 60,
 	// 	space: 50,
-	// 	colorItem: 2
+	// 	colorItem: 4
 	// })
 
 	// 跑马灯
@@ -48,34 +48,43 @@ function drawLampstand (ctx, opt) {
 	// 阴影
 	ctx.beginPath()
 	ctx.fillStyle = '#191716'
-	ctx.moveTo(x-1.62*r, y + space*2 + r*4.5)
-	ctx.bezierCurveTo(x-1.4*r, y + space*2 + r*6.3, x+1.4*r, y +space*2 + r*6.3, x+1.62*r, y + space*2 + r*4.5)
+	ctx.moveTo(x-1.6*r, y+space*2+r*4.6)
+	ctx.bezierCurveTo(x-1.5*r, y + space*2 + r*6.4, x+1.5*r, y +space*2 + r*6.4, x+1.6*r, y + space*2 + r*4.6)
 	ctx.fill()
 	ctx.closePath()
 
 	// 灰边
 	ctx.beginPath()
+	ctx.moveTo(x-1.6*r, y-0.6*r)
 	ctx.fillStyle = '#646464'
-	ctx.arc(x, y, 1.7*r, Math.PI*1.1 , -0.1*Math.PI, false)
-	ctx.arc(x, y + space*2 + r*4, 1.7*r, Math.PI*0.1, 0.9*Math.PI, false)
+	ctx.bezierCurveTo(x-1.4*r, y-2.2*r, x+1.4*r, y-2.2*r, x+1.6*r,y-0.6*r)
+	ctx.bezierCurveTo(x+1.6*r, y+2*r, x+1.6*r, y+4*r, x+1.6*r, y + space*2 + r*4.6)
+	ctx.bezierCurveTo(x+1.4*r, y+space*2+6.2*r, x-1.4*r, y+space*2+6.2*r, x-1.6*r, y+space*2+r*4.6)
 	ctx.fill()
 	ctx.closePath()
 
 	// 渐变
 	ctx.beginPath()
-	ctx.fillStyle = 'black'
-	ctx.arc(x, y, 1.53*r, Math.PI*1.1 , -0.1*Math.PI, false)
-	ctx.arc(x, y + space*2 + r*4, 1.53*r, Math.PI*0.1, 0.9*Math.PI, false)
-	ctx.fill()
+	ctx.moveTo(x-1.4*r, y-0.6*r)
+	ctx.lineWidth = 3
+	ctx.strokeStyle = 'black'
+	ctx.bezierCurveTo(x-1.2*r, y-2*r, x+1.2*r, y-2*r, x+1.4*r, y-0.6*r)
+	ctx.bezierCurveTo(x+1.4*r, y+2*r, x+1.4*r, y+4*r, x+1.4*r, y + space*2 + r*4.6)
+	ctx.bezierCurveTo(x+1.2*r, y+space*2+6*r, x-1.2*r, y+space*2+6*r, x-1.4*r, y+space*2+r*4.6)
+	ctx.bezierCurveTo(x-1.4*r, y+2*r, x-1.4*r, y+4*r, x-1.4*r, y-0.6*r)
+	ctx.stroke()
 	ctx.closePath()
 
 	ctx.beginPath()
+	ctx.moveTo(x-1.4*r, y-0.6*r)
 	gradientColor = ctx.createLinearGradient(x, y - 1.5*r, x, y + space*2 + r*4 + 1.5*r)
 	gradientColor.addColorStop(0, '#121212')
 	gradientColor.addColorStop(1, '#929292')
 	ctx.fillStyle = gradientColor
-	ctx.arc(x, y, 1.5*r, Math.PI*1.1 , -0.1*Math.PI, false)
-	ctx.arc(x, y + space*2 + r*4, 1.5*r, Math.PI*0.1, 0.9*Math.PI, false)
+	ctx.bezierCurveTo(x-1.2*r, y-2*r, x+1.2*r, y-2*r, x+1.4*r, y-0.6*r)
+	ctx.bezierCurveTo(x+1.4*r, y+2*r, x+1.4*r, y+4*r, x+1.4*r, y + space*2 + r*4.6)
+	ctx.bezierCurveTo(x+1.2*r, y+space*2+6*r, x-1.2*r, y+space*2+6*r, x-1.4*r, y+space*2+r*4.6)
+	ctx.bezierCurveTo(x-1.4*r, y+2*r, x-1.4*r, y+4*r, x-1.4*r, y-0.6*r)
 	ctx.fill()
 	ctx.closePath()
 }
@@ -90,24 +99,21 @@ function drawBorder (ctx, opt) {
 		// 黑边
 		ctx.beginPath()
 		ctx.moveTo(x, yAxis[i])
-		ctx.lineWidth = 1
+		ctx.lineWidth = 2
 		ctx.strokeStyle = 'black'
-		ctx.arc(x, yAxis[i], r + 5, 0, 2 * Math.PI, false)
+		ctx.arc(x, yAxis[i], r + 8, 0, 2 * Math.PI, false)
 		ctx.stroke()
 		ctx.closePath()
 
 		// 金属边
 		ctx.beginPath()
-		ctx.lineWidth = 7
+		ctx.lineWidth = 14
 		gradientColor = ctx.createLinearGradient(x-r, yAxis[i]-r, x + r, yAxis[i]+r)
-		gradientColor.addColorStop(0, '#FCFDFF')
-		gradientColor.addColorStop(0.3, '#4B4948')
-		gradientColor.addColorStop(0.31, '#4B4948')
-		gradientColor.addColorStop(0.6, '#FCFDFF')
-		gradientColor.addColorStop(0.61, '#FCFDFF')
-		gradientColor.addColorStop(0.9, '#4B4948')
-		gradientColor.addColorStop(0.91, '#4B4948')
-		gradientColor.addColorStop(1, '#FCFDFF')
+		gradientColor.addColorStop(0, '#222')
+		gradientColor.addColorStop(0.25, '#ddd')
+		gradientColor.addColorStop(0.5, '#777')
+		gradientColor.addColorStop(0.75, '#ddd')
+		gradientColor.addColorStop(1, '#222')
 		ctx.strokeStyle = gradientColor
 		ctx.arc(x, yAxis[i], r + 1, 0, 2 * Math.PI, false)
 		ctx.stroke()
@@ -116,7 +122,7 @@ function drawBorder (ctx, opt) {
 		ctx.beginPath()
 		ctx.lineWidth = 2
 		ctx.strokeStyle = 'black'
-		ctx.arc(x, yAxis[i], r, 0, 2 * Math.PI, false)
+		ctx.arc(x, yAxis[i], r+1, 0, 2 * Math.PI, false)
 		ctx.stroke()
 		ctx.closePath()
 	}
@@ -170,7 +176,7 @@ function drawLights (ctx, opt) {
 function drawSingleLight (ctx, opt, y, color) {
 	let { x, r } = opt
 	ctx.beginPath()
-	ctx.lineWidth = 2
+	ctx.lineWidth = 3
 	let gradientColor = ctx.createLinearGradient(x-r, y-r, x+r, y+r)
 	gradientColor.addColorStop(0, color[1])
 	gradientColor.addColorStop(0.2, color[2])
@@ -182,10 +188,23 @@ function drawSingleLight (ctx, opt, y, color) {
 
 	if (color[0]) {
 		ctx.beginPath()
-		ctx.strokeStyle = '#fff'
-		ctx.arc(x, y, r-4, Math.PI*0.7, -Math.PI*0.4, false)
+		// ctx.shadowOffsetX = -4
+		// ctx.shadowOffsetY = 3.5
+		// ctx.shadowBlur = 2
+		// ctx.shadowColor = 'rgb(255, 255, 255)'
+		ctx.filter = 'blur(4px)'
+		ctx.strokeStyle = 'white'
+		ctx.arc(x, y, r-5, Math.PI*0.7, -Math.PI*0.4, false)
 		ctx.stroke()
+		// ctx.shadowBlur = ''
+		// ctx.shadowColor = ''
 		ctx.closePath()
+
+		// ctx.beginPath()
+		// ctx.strokeStyle = 'white'
+		// ctx.arc(x, y, r-4, Math.PI*0.7, -Math.PI*0.4, false)
+		// ctx.stroke()
+		// ctx.closePath()
 	}
 }
 
