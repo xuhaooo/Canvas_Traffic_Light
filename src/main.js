@@ -1,23 +1,22 @@
 window.onload = function () {
-	getLights('#myCanvas', {
-		x: 800,
-		y: 200,
-		r: 60,
-		space: 50,
-		colorItem: 4
-	})
-
+	// getLights('#myCanvas', {
+	// 	x: 200,
+	// 	y: 200,
+	// 	r: 60,
+	// 	space: 50,
+	// 	colorItem: 2
+	// })
 
 	// 跑马灯
-	// setInterval(() => {
-	// 	getLights('#myCanvas', {
-	// 		x: 200,
-	// 		y: 200,
-	// 		r: 60,
-	// 		space: 50,
-	// 		colorItem: getRandomIntInclusive(0, 4)
-	// 	})
-	// }, 400)
+	setInterval(() => {
+		getLights('#myCanvas', {
+			x: 400,
+			y: 250,
+			r: 60,
+			space: 50,
+			colorItem: getRandomIntInclusive(0, 4)
+		})
+	}, 400)
 }
 
 // @description 画指示灯
@@ -200,8 +199,8 @@ function getRandomIntInclusive(min, max) {
 // 消除 canvas 锯齿
 function adaptDPR (canvas, ctx) {
 	let dpr = window.devicePixelRatio
-	let width = canvas.width
-	let height = canvas.height
+	let width = document.documentElement.clientWidth
+	let height = document.documentElement.clientHeight
 	canvas.width = Math.round(width * dpr)
 	canvas.height = Math.round(height * dpr)
 	canvas.style.width = width + 'px'
