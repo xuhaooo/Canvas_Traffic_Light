@@ -7,6 +7,7 @@ window.onload = function () {
 		colorItem: 4
 	})
 
+
 	// 跑马灯
 	// setInterval(() => {
 	// 	getLights('#myCanvas', {
@@ -24,7 +25,7 @@ window.onload = function () {
 // @params { colorItem } 0, 全灭 | 1, 红灯 | 2, 黄灯 | 3, 绿灯 | 4, 全亮 
 function getLights (selector, options) {
 	let canvas = document.querySelector(selector)
-	let ctx = canvas.getContext('2d')
+	let ctx = canvas.getContext('2d')		
 	let opt = {
 		x: 100,
 		y: 100,
